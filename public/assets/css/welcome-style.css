@@ -1,0 +1,68 @@
+/* HEADER */
+.welcome-nav{
+    background-color: #003566;
+}
+
+.welcome-nav .navbar-nav a.nav-link{
+    color: #FFF;
+    font-weight: 600;
+}
+
+.welcome-nav .navbar-nav .nav-link.active, .welcome-nav .navbar-nav .nav-link:hover{
+    color: #FFC300
+}
+
+.navbar.scrolled{
+    background-color: #FFF;
+    transition: background-color 0.5s ease;
+    box-shadow: 0px -10px 30px #666;
+}
+
+.navbar.scrolled a.nav-link{
+    color: #666;
+}
+
+.navbar img.main-logo{
+    max-width: 150px;
+}
+.navbar img.main-logo-hitam{
+    display: none;
+}
+
+.navbar.scrolled img.main-logo-hitam{
+    display: inline-block;
+}
+
+.navbar.scrolled img.main-logo-putih{
+    display: none;
+}
+
+/* Style HEADER end*/
+
+.main-biru
+{
+    background-color: #003566;
+    color: #FFF;
+}
+
+.main-biru h2 span {
+    color: #FFC300;
+}
+
+button.btn-warning
+{
+    background-color: #FFC300;
+    border-radius: 10px;
+}
+
+/* ABOUT */
+.main-grey{
+    /* background-color: #f9f9f9; */
+    background-color: #fff;
+}
+
+.about-atas-judul{
+    color: #999;
+    font-size: 22px;
+    font-weight: 600;
+}
