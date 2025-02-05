@@ -30,10 +30,6 @@ Sebelum menjalankan sistem ini, pastikan bahwa server Anda memenuhi persyaratan 
 Ikuti langkah-langkah di bawah ini untuk menginstalasi dan menjalankan proyek:
 
 1. **Clone Repository**:
-   ```bash
-   git clone <url-repository-anda>
-   cd <nama-folder-proyek>
-   ```
 
 2. **Instalasi Library**:
    Jalankan perintah berikut untuk menginstalasi library yang dibutuhkan:
