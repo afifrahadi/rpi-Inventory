@@ -5,9 +5,6 @@
     <div class="container">
         <h2 class="my-4 text-center fw-bold">Detail Data Inventory</h2>
         <div class="card shadow-sm">
-            {{-- <div class="card-header bg-primary text-white">
-                <h5 class="mb-0">Detail Inventory</h5>
-            </div> --}}
             <div class="card-body">
                 <table class="table table-bordered table-hover">
                     <thead class="table-primary">

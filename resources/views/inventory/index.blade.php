@@ -66,7 +66,7 @@
                                             <img src="{{ asset('storage/' . $inventory->qr_code) }}" alt="QR Code" class="img-fluid">
                                         </div>
                                         <div class="modal-footer">
-                                            <a href="{{ route('inventory.qr-pdf', $inventory->id) }}" target="_blank" class="btn btn-danger">
+                                            <a href="{{ route('inventory.qr-pdf', $inventory->serial_number) }}" target="_blank" class="btn btn-danger">
                                                 Print to PDF
                                             </a>
                                         </div>

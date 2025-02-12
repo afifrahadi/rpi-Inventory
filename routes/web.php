@@ -24,7 +24,7 @@ Route::post('/inventories/add', [InventoryController::class, 'store'])->name('in
 Route::get('/inventories/{inventory}/edit', [InventoryController::class, 'edit']);
 Route::put('/inventories/{inventory}/update', [InventoryController::class, 'update'])->name('inventory.update');
 Route::delete('/inventories/{inventory}/destroy', [InventoryController::class, 'destroy'])->name('inventory.destroy');
-Route::get('/inventories/{id}', [InventoryController::class, 'show'])->name('inventory.show');
+Route::get('/inventories/{serial_number}', [InventoryController::class, 'show'])->name('inventory.show');
 
 // PDF
-Route::get('/inventory/{id}/qr-pdf', [InventoryController::class, 'viewQrPdf'])->name('inventory.qr-pdf');
+Route::get('/inventory/{serial_number}/qr-pdf', [InventoryController::class, 'viewQrPdf'])->name('inventory.qr-pdf');

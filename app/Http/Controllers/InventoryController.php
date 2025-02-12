@@ -67,8 +67,9 @@ class InventoryController extends Controller
         // Buat Inventory awal tanpa QR Code
         $inventory = Inventory::create($data);
 
-        // Generate QR Code berdasarkan ID Inventory
-        $qrCodeData = $inventory->id;
+        // Generate QR Code berdasarkan SN
+        // $qrCodeData = $inventory->serial_number;
+        $qrCodeData = $data['serial_number'];
         $qrImageName = $data['serial_number'] . '.png';
         $qr = QrCode::format('png')->size(300)->margin(3)->generate($qrCodeData);
 
@@ -86,10 +87,15 @@ class InventoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($serial_number)
     {
         // Cari inventory berdasarkan ID
-        $inventory = Inventory::findOrFail($id); // Mengambil satu model berdasarkan ID
+        // $inventory = Inventory::findOrFail($serial_number); // Mengambil satu model berdasarkan ID
+        $inventory = Inventory::where('serial_number', $serial_number)->first();
+
+        if (!$inventory) {
+            return redirect()->back()->with('error', 'Inventory not found.');
+        }
 
         // Kirim data ke view
         return view('inventory.show', compact('inventory'));
@@ -130,7 +136,7 @@ class InventoryController extends Controller
         }
 
         // Generate QR code baru
-        $qrCodeData = $inventory->id;
+        $qrCodeData = $data['serial_number'];
         $qrImageName = $data['serial_number'] . '.png';
         $qrCodePath = 'qr/' . $qrImageName;
 
@@ -168,10 +174,11 @@ class InventoryController extends Controller
         return redirect(route('inventory.index'))->with('success', 'Data dan QR Code berhasil dihapus.');
     }
 
-    public function viewQrPdf($id)
+    public function viewQrPdf($serial_number)
     {
         // Ambil data inventory berdasarkan ID
-        $inventory = Inventory::findOrFail($id);
+        // $inventory = Inventory::findOrFail($id);
+        $inventory = Inventory::where('serial_number', $serial_number)->firstOrFail();
 
         // Ambil path QR code yang ada di storage
         $qrCodePath = storage_path('app/public/' . $inventory->qr_code);
@@ -205,7 +212,7 @@ class InventoryController extends Controller
         // Menggunakan HTML + CSS agar tampilan lebih rapi
         $html = "
         <div style='text-align: center; font-family: Arial, sans-serif; font-size: 8pt;'>
-            <p style='margin: 0; font-weight: bold;'>ID: {$inventory->id}</p>
+            <p style='margin: 0; font-weight: bold;'>{$inventory->serial_number}</p>
             <img src='{$qrCodePath}' style='width: 90%; max-width: {$widthMm}mm; height: auto;' />
         </div>";
 
