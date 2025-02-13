@@ -16,7 +16,6 @@
                 <p id="scan-output" class="text-success">No result yet.</p>
             </div>
 
-            <!-- BUTTONS -->
             <div class="mt-4">
                 <button class="btn btn-secondary me-2" onclick="resetScanner()">Reset Scanner</button>
                 <button class="btn btn-primary" onclick="goBack()">Go Back</button>
@@ -25,7 +24,7 @@
     </div>
 
     <script>
-        // Function to handle successful QR Code scan
+        // Function QR Code
         function onScanSuccess(decodedText, decodedResult) {
             console.log(`Code scanned = ${decodedText}`, decodedResult);
             const outputElement = document.getElementById("scan-output");
@@ -33,19 +32,18 @@
             window.location.href = `/inventories/${decodedText}`;
         }
 
-        // Initialize QR Code scanner
+        // Inisiasi QR Code
         const html5QrcodeScanner = new Html5QrcodeScanner(
             "qr-reader", { fps: 10, qrbox: 250 });
         html5QrcodeScanner.render(onScanSuccess);
 
-        // Reset scanner function
+        // Reset scanner
         function resetScanner() {
             html5QrcodeScanner.clear();
             html5QrcodeScanner.render(onScanSuccess);
             document.getElementById("scan-output").textContent = "No result yet.";
         }
 
-        // Navigate back to the previous page
         function goBack() {
             window.history.back();
         }

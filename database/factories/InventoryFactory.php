@@ -18,9 +18,10 @@ class InventoryFactory extends Factory
      */
     public function definition(): array
     {
+        // membuat Dummy SN
         $serialNumber = 'SN' . $this->faker->unique()->numerify('##########');
 
-        // Generate QR Code berdasarkan Serial Number atau data lain yang diinginkan
+        // Generate QR Code berdasarkan Serial Number
         $qrCodeData = $serialNumber;
         $qrImageName = $serialNumber . '.png';
         $qr = QrCode::format('png')->size(300)->margin(3)->generate($qrCodeData);
