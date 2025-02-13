@@ -195,14 +195,14 @@ class InventoryController extends Controller
         $widthMm = $width * 0.264583;
         $heightMm = $height * 0.264583;
 
-        // Tentukan ukuran kertas A8 (52mm x 74mm)
+        // Tentukan ukuran dalam mm
         $paperWidth = 50;
         $paperHeight = 50;
 
-        // Inisialisasi mPDF dengan ukuran A8
+        // Inisialisasi mPDF
         $mpdf = new Mpdf([
             'mode'   => 'utf-8',
-            'format' => [$paperWidth, $paperHeight], // Ukuran kertas A8
+            'format' => [$paperWidth, $paperHeight],
             'margin_left'   => 3,
             'margin_right'  => 3,
             'margin_top'    => 3,
@@ -216,10 +216,8 @@ class InventoryController extends Controller
             <img src='{$qrCodePath}' style='width: 90%; max-width: {$widthMm}mm; height: auto;' />
         </div>";
 
-        // Tulis isi ke dalam PDF
         $mpdf->WriteHTML($html);
 
-        // Tampilkan PDF di browser
         return $mpdf->Output("QRCode_ID_{$inventory->id}_SN_{$inventory->serial_number}.pdf", 'I');
     }
 }
